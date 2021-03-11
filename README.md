@@ -1,9 +1,9 @@
+# typescript-jest-tdd
+Test Driven Development Example in TypeScript using Jest.
+
 <p align="center">
   <img src="https://github.com/nunogois/typescript-jest-tdd/blob/main/typescript-jest-tdd.png?raw=true"/>
 </p>
-
-# typescript-jest-tdd
-Test Driven Development Example in TypeScript using Jest.
 
 ## Getting Started
  1. Fork or clone this repository by running `git clone https://github.com/nunogois/typescript-jest-tdd.git` in a folder of your choice;
