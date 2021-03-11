@@ -51,6 +51,14 @@ describe('calculator', () => {
     })
   })
 
+  describe('reset', () => {
+    it('should reset the value to 0', () => {
+      let calc = new Calculator(10)
+      calc.reset()
+      expect(calc.value).toBe(0)
+    })
+  })
+
   describe('history feature with undo', () => {
     it('should keep a record of the old value whenever there is an operation', () => {
       let calc = new Calculator(1)
@@ -58,9 +66,11 @@ describe('calculator', () => {
       calc.add(4)
       calc.subtract(2)
       calc.multiply(4)
-      calc.divide(2)
       calc.power(2)
-      expect(calc.history).toEqual([1, 5, 3, 12, 6]) // since there is no operation after power(2), we skip 36
+      calc.divide(2)
+      calc.reset()
+      calc.reset()
+      expect(calc.history).toEqual([1, 5, 3, 12, 144, 72, 0]) // since there is no operation after the last reset, we skip the last 0
     })
     it('should undo the last operation and return to the previous value', () => {
       let calc = new Calculator(10)
@@ -72,6 +82,10 @@ describe('calculator', () => {
       calc.subtract(10)
       calc.undo()
       expect(calc.value).toBe(8)
+      calc.reset()
+      calc.add(2)
+      calc.undo()
+      expect(calc.value).toBe(0)
     })
     it('should support multiple undos', () => {
       let calc = new Calculator(1337)
@@ -95,14 +109,6 @@ describe('calculator', () => {
       calc.undo() // 7
       calc.undo() // negative undo, should do nothing
       expect(calc.value).toBe(7)
-    })
-  })
-
-  describe('reset', () => {
-    it('should reset the value to 0', () => {
-      let calc = new Calculator(10)
-      calc.reset()
-      expect(calc.value).toBe(0)
     })
   })
 })
