@@ -6,7 +6,7 @@ describe('calculator', () => {
     expect(calc.value).toBe(0)
   })
 
-  it('should init a specific value when specified', () => {
+  it('should init with a specific value when specified', () => {
     let calc = new Calculator(10)
     expect(calc.value).toBe(10)
   })
